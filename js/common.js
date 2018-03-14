@@ -2,28 +2,36 @@
 
   $('.table__text, .table__form, .popup_submit').hide();
 
-  const title = $('.table__title p');
-  const fade_btn = $('.fade_btn');
-  const submit = $('.submit_btn');
+  var title = $('.table__title p');
+  var fade_btn = $('.fade_btn');
+  var submit = $('.submit_btn');
 
-  title.on('click', function () {
+  function clickToTitle() {
     $(this).parent().next().next().next().stop(true).fadeToggle();
-  });
+    $(this).toggleClass('blocking');
+    if($(this).hasClass('blocking')) {
+      fade_btn.off('click', clickToBtn);
+    } else {
+      fade_btn.on('click', clickToBtn);
+    }
+  }
 
-  fade_btn.on('click', function (e) {
+  function clickToBtn(e) {
     e.preventDefault();
     $(this).parent().next().stop(true).fadeToggle();
     $(this).parent().next().next().stop(true).fadeToggle();
     if($(this).hasClass('btn_answer')) {
       $(this).text('cancel').removeClass('btn_answer').addClass('cancel');
+      title.off('click', clickToTitle);
     } else {
       $(this).text('answer').removeClass('cancel').addClass('btn_answer');
+      title.on('click', clickToTitle);
     }
-  });
-  
-  submit.on('click', function (e) {
+  }
+
+  function submitClick (e) {
     e.preventDefault();
-    const $that = $(this);
+    var $that = $(this);
     $that.parent().parent().next().show();
     $that.parent().parent().prev().prev().children().text('complete').removeClass('cancel').addClass('complete').off('click');
     setTimeout(function () {
@@ -31,6 +39,10 @@
       $that.parent().parent().prev().hide();
       $that.parent().parent().next().hide();
     }, 1500);
-  });
+  }
+
+  title.on('click', clickToTitle);
+  fade_btn.on('click', clickToBtn);
+  submit.on('click', submitClick);
 
 })(jQuery);
