@@ -10,9 +10,9 @@
     $(this).parent().next().next().next().stop(true).fadeToggle();
     $(this).toggleClass('blocking');
     if($(this).hasClass('blocking')) {
-      fade_btn.off('click', clickToBtn);
+      // fade_btn.off('click', clickToBtn);
     } else {
-      fade_btn.on('click', clickToBtn);
+      // fade_btn.on('click', clickToBtn);
     }
   }
 
@@ -22,14 +22,14 @@
     $(this).parent().next().next().stop(true).fadeToggle();
     if($(this).hasClass('btn_answer')) {
       $(this).text('cancel').removeClass('btn_answer').addClass('cancel');
-      title.off('click', clickToTitle);
+      // title.off('click', clickToTitle);
     } else {
       $(this).text('answer').removeClass('cancel').addClass('btn_answer');
-      title.on('click', clickToTitle);
+      // title.on('click', clickToTitle);
     }
   }
 
-  function submitClick (e) {
+  function submitClick(e) {
     e.preventDefault();
     var $that = $(this);
     $that.parent().parent().next().show();
@@ -41,8 +41,8 @@
     }, 1500);
   }
 
-  title.on('click', clickToTitle);
-  fade_btn.on('click', clickToBtn);
-  submit.on('click', submitClick);
+  title.on('click', clickToTitle); // Click to title
+  fade_btn.on('click', clickToBtn); // Click to button
+  submit.on('click', submitClick); // Click to submit
 
 })(jQuery);
