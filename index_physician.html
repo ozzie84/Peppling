@@ -41,11 +41,11 @@
         <div class="dashboard__main">
           <h1 class="physician__head">Ask a Doctor</h1><span class="physician__subtext">Answer within 24 hours</span>
           <div class="dashboard_table">
-            <form class="physician__form">
-              <label>Your Question</label>
+            <form class="physician__form" style="position: relative;">
+              <label>Your Question<span class="counter">0/120</span></label>
               <input type="text" name="question" placeholder="I have had fever every third week for last 5 months" max="120">
-              <label>Description</label>
-              <textarea placeholder="I am a 23 year old female. I have had fever every third week for last 5 months..." max="500"></textarea>
+              <label>Description<span class="counterLow">0/500</span></label>
+              <textarea id="counterLow" placeholder="I am a 23 year old female. I have had fever every third week for last 5 months..." max="500"></textarea>
               <label>Email</label>
               <input type="email" name="email" placeholder="eve.higgins@gmail.com">
               <input type="submit" value="submit" name="submit">
