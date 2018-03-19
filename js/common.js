@@ -1,19 +1,20 @@
 (function ($) {
 
-  $('.table__text, .table__form, .popup_submit').hide();
+  $('.table__text, .table__form, .popup_submit, .table__questions, .table__answer').hide();
 
   var title = $('.table__title p');
   var fade_btn = $('.fade_btn');
   var submit = $('.submit_btn');
+  var complete = $('.complete');
 
   function clickToTitle() {
     $(this).parent().next().next().next().stop(true).fadeToggle();
     $(this).toggleClass('blocking');
-    if($(this).hasClass('blocking')) {
+    // if($(this).hasClass('blocking')) {
       // fade_btn.off('click', clickToBtn);
-    } else {
+    // } else {
       // fade_btn.on('click', clickToBtn);
-    }
+    // }
   }
 
   function clickToBtn(e) {
@@ -33,14 +34,22 @@
     e.preventDefault();
     var $that = $(this);
     $that.parent().parent().next().show();
-    $that.parent().parent().prev().prev().children().text('complete').removeClass('cancel').addClass('complete').off('click');
+    $that.parent().parent().prev().prev().children().text('complete').removeClass('cancel').addClass('complete');
     setTimeout(function () {
+      $that.parent().parent().parent().hide();
       $that.parent().parent().hide();
       $that.parent().parent().prev().hide();
       $that.parent().parent().next().hide();
     }, 1500);
   }
 
+  function clickComplete(e) {
+    e.preventDefault();
+    $(this).parent().next().fadeToggle();
+    $(this).parent().next().next().fadeToggle();
+  }
+
+  complete.on('click', clickComplete); // Click to complete
   title.on('click', clickToTitle); // Click to title
   fade_btn.on('click', clickToBtn); // Click to button
   submit.on('click', submitClick); // Click to submit
