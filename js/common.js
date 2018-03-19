@@ -54,18 +54,17 @@
   fade_btn.on('click', clickToBtn); // Click to button
   submit.on('click', submitClick); // Click to submit
 
-  // KeyUp input
+  // KeyPress input
 
   var input = $('input[name="question"]');
   var textarea = $('#counterLow');
   var count = $('.counter');
   var countTextarea = $('.counterLow');
 
-  input.on('keypress', function() {
-    count.text(this.value.length + '/120');
-  });
+  input.on('keydown', function() {
+    count.text(this.value.length + '/120');  });
 
-  textarea.on('keypress', function() {
+  textarea.on('keydown', function() {
     countTextarea.text(this.value.length + '/500');
   });
 
