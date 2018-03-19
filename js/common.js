@@ -61,11 +61,11 @@
   var count = $('.counter');
   var countTextarea = $('.counterLow');
 
-  input.on('keyup', function() {
+  input.on('keypress', function() {
     count.text(this.value.length + '/120');
   });
 
-  textarea.on('keyup', function() {
+  textarea.on('keypress', function() {
     countTextarea.text(this.value.length + '/500');
   });
 
