@@ -49,10 +49,10 @@
     $(this).parent().next().next().fadeToggle();
   }
 
-  complete.on('click', clickComplete); // Click to complete
-  title.on('click', clickToTitle); // Click to title
-  fade_btn.on('click', clickToBtn); // Click to button
-  submit.on('click', submitClick); // Click to submit
+  complete.on('click', clickComplete);  // Click to complete
+  title.on('click', clickToTitle);      // Click to title
+  fade_btn.on('click', clickToBtn);     // Click to button
+  submit.on('click', submitClick);      // Click to submit
 
   // KeyPress input
 
